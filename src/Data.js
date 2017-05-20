@@ -23,9 +23,8 @@ class MyComponent extends React.Component {
 
   componentDidMount() {
 
-    const URL = 'https://api.github.com/users/sohanchy/repos'
+    const URL = 'https://api.github.com/users/abrarshariar/repos'
     let f = fetch(URL)
-
     f.then((response) => response.json())
     .then((responseJson) => {
       this.setState({data: responseJson})
