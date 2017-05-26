@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 function ListItem(props) {
   // Correct! There is no need to specify the key here:
@@ -24,14 +25,10 @@ class MyComponent extends React.Component {
   componentDidMount() {
 
     const URL = 'https://api.github.com/users/abrarshariar/repos'
-    let f = fetch(URL)
-    f.then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({data: responseJson})
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+
+    axios.get(URL)
+      .then((response) => this.setState({data: response.data}))
+      .catch((err) => console.error(err));
   }
 
   render() {
