@@ -23,7 +23,9 @@ class MyComponent extends React.Component {
 
   componentDidMount() {
 
-    const URL = 'https://api.github.com/users/abrarshariar/repos'
+    let USER = 'abrarshariar'
+    let gistsORrepos = 'repos'
+    const URL = `https://api.github.com/users/${USER}/${gistsORrepos}`
     let f = fetch(URL)
     f.then((response) => response.json())
     .then((responseJson) => {
