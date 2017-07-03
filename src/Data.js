@@ -46,9 +46,6 @@ class MyComponent extends React.Component {
       });
   }
 
-  componentDidMount() {
-      this.fetching()
-  }
 
   render() {
     const jsonData = this.state.data;
@@ -61,7 +58,7 @@ class MyComponent extends React.Component {
     return (
       <div>
         <button onClick={this.handleClick}>
-          {this.state.gistsORrepos ==="repos" ? "gists" : "repos"}
+          {this.state.gistsORrepos ==="gists" ? "gists" : "repos"}
         </button>
         {listItems}
       </div>
