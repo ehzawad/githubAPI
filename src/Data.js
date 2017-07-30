@@ -1,7 +1,7 @@
 import React from "react";
 
 function ListItem(props) {
-  // Correct! There is no need to specify the key here:
+  // stateless component
   return (
     <div>
       <li>
