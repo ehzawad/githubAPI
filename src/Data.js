@@ -1,14 +1,15 @@
 import React from "react";
+import { Button, Grid, Jumbotron, ListGroup, ListGroupItem } from "react-bootstrap"
 
 function ListItem(props) {
   // stateless component
   return (
     <div>
-      <li>
-        <span style={{ color: "purple" }}>{props.reponame}</span>{" "}
-        <strong>-></strong>
-        <span style={{ color: "brown" }}> {props.description}</span>
-      </li>
+      <ListGroup>
+        <ListGroupItem>
+          <strong>{props.reponame} -></strong> {props.description}
+        </ListGroupItem>
+      </ListGroup>
     </div>
   );
 }
@@ -50,16 +51,23 @@ class MyComponent extends React.Component {
   render() {
     const jsonData = this.state.data;
     // console.log(jsonData)
-    // jsonData.map(x => console.log(x.name))
+    const owner = jsonData.map(x =>  x.owner.login)
+    const username = new Set(owner)
+
     const listItems = jsonData.map((x, index) =>
       <ListItem key={index} reponame={x.name} description={x.description} />
     );
 
     return (
       <div>
-        <button onClick={this.handleClick}>
-          {this.state.gistsORrepos ==="gists" ? "gists" : "repos"}
-        </button>
+        <Jumbotron>
+          <Grid>
+            <Button bsStyle="info" onClick={this.handleClick}>
+              {this.state.gistsORrepos ==="gists" ? "gists" : "repos"}
+              <br/>{username}
+            </Button>
+          </Grid>
+        </Jumbotron>
         {listItems}
       </div>
     );
